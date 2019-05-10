@@ -12,4 +12,9 @@ The example JAR file expects input and output paths:
 
 The example command you might run is:
 
-`spark-submit --class "com.example.App" --master local[4] spark-scala-example-1.0-SNAPSHOT.jar "/tmp/test.txt" "/tmp/result.txt"`
+```
+spark-submit --class "com.example.App" --master local[4] spark-scala-example-1.0-SNAPSHOT.jar "/tmp/test.txt" "/tmp/result.txt"
+```
+
+## How to run JAR using Oozie
+I've added `oozie` folder, which contains workflow and coordinator configuration files. If you are using Oozie as your job scheduler then you might want to use those configurations. They are simple and you should modify them accordingly.

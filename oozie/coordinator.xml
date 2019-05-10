@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<coordinator-app xmlns="uri:oozie:coordinator:0.5" end="2020-01-31T17:53Z" frequency="${coord:minutes(5)}" name="Simple Spark Scala Coordinator" start="2019-05-10T04:47Z" timezone="UTC">
+    <action>
+        <workflow>
+            <app-path>/user/admin/tmp/workflow.xml</app-path>
+        </workflow>
+    </action>
+</coordinator-app>

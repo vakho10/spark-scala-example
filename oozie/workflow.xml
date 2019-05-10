@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<workflow-app xmlns="uri:oozie:workflow:0.5" name="Spark Scala Example Workflow">
+    <start to="spark_scala_example"/>
+    <action name="spark_scala_example">
+        <spark xmlns="uri:oozie:spark-action:0.2">
+            <job-tracker>${resourceManager}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <prepare>
+                <delete path="${nameNode}/user/${wf:user()}/tmp/result_large"/>
+            </prepare>
+            <master>local</master>
+            <name>Spark Scala Example Action</name>
+            <class>com.example.App</class>
+            <jar>${nameNode}/user/${wf:user()}/tmp/spark-scala-example-1.0-SNAPSHOT.jar</jar>
+            <arg>${nameNode}/user/${wf:user()}/tmp/test_large.txt</arg>
+            <arg>${nameNode}/user/${wf:user()}/tmp/result_large</arg>
+        </spark>
+        <ok to="end"/>
+        <error to="kill"/>
+    </action>
+    <kill name="kill">
+        <message>${wf:errorMessage(wf:lastErrorNode())}</message>
+    </kill>
+    <end name="end"/>
+</workflow-app>
